@@ -137,7 +137,7 @@ def check_mx_records(respond, body):
         test_mx = dns.resolver.resolve(domain, 'MX')
         for dns_data in test_mx:
             if 'mx' in str(dns_data):
-                respond({dns_data})
+                respond(dns_data)
     except Exception as e:
         print(e)
         respond("  [FAIL] MX record not found.")

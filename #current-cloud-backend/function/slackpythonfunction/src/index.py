@@ -128,10 +128,8 @@ def check_domain(respond, body):
 
 def check_mx_records(respond, body):
     time.sleep(8)
-    split_body = body['text'].split()
 
-    # Decouple request into args
-    domain = split_body[0]
+    domain = body['text']
 
 # Testing MX Record
 #

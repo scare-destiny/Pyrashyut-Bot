@@ -15,7 +15,7 @@
       "function": {
         "slackpythonfunction": {
           "deploymentBucketName": "amplify-slackamplify-dev-190320-deployment",
-          "s3Key": "amplify-builds/slackpythonfunction-52582f3666366431374c-build.zip"
+          "s3Key": "amplify-builds/slackpythonfunction-78347733597578583337-build.zip"
         }
       }
     }
