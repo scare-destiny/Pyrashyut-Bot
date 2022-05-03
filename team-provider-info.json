@@ -1,0 +1,23 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-slackamplify-dev-190320-authRole",
+      "UnauthRoleArn": "arn:aws:iam::356974071900:role/amplify-slackamplify-dev-190320-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::356974071900:role/amplify-slackamplify-dev-190320-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-slackamplify-dev-190320-deployment",
+      "UnauthRoleName": "amplify-slackamplify-dev-190320-unauthRole",
+      "StackName": "amplify-slackamplify-dev-190320",
+      "StackId": "arn:aws:cloudformation:us-east-1:356974071900:stack/amplify-slackamplify-dev-190320/f65555e0-8523-11ec-a1bf-0ab3a95c4fad",
+      "AmplifyAppId": "d17o9mpcwic1t0"
+    },
+    "categories": {
+      "function": {
+        "slackpythonfunction": {
+          "deploymentBucketName": "amplify-slackamplify-dev-190320-deployment",
+          "s3Key": "amplify-builds/slackpythonfunction-564750374a794e597541-build.zip"
+        }
+      }
+    }
+  }
+}
