@@ -23,20 +23,20 @@
         "Name": "slackpythonfunction-dev",
         "LambdaExecutionRole": "slackamplifyLambdaRole784bdb08-dev"
       },
-      "lastPushTimeStamp": "2022-05-03T10:21:29.079Z",
+      "lastPushTimeStamp": "2022-05-03T10:30:48.355Z",
       "providerMetadata": {
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-slackamplify-dev-190320-deployment/amplify-cfn-templates/function/slackpythonfunction-cloudformation-template.json",
         "logicalId": "functionslackpythonfunction"
       },
       "s3Bucket": {
         "deploymentBucketName": "amplify-slackamplify-dev-190320-deployment",
-        "s3Key": "amplify-builds/slackpythonfunction-575a337437385141584f-build.zip"
+        "s3Key": "amplify-builds/slackpythonfunction-4e41316159514c794833-build.zip"
       },
-      "lastBuildTimeStamp": "2022-05-03T10:20:08.013Z",
+      "lastBuildTimeStamp": "2022-05-03T10:29:28.146Z",
       "lastBuildType": "PROD",
-      "lastPackageTimeStamp": "2022-05-03T10:20:10.325Z",
-      "distZipFilename": "slackpythonfunction-575a337437385141584f-build.zip",
-      "lastPushDirHash": "LtRVRDbMXKsaPcukEw1tg0HhrHA="
+      "lastPackageTimeStamp": "2022-05-03T10:29:30.377Z",
+      "distZipFilename": "slackpythonfunction-4e41316159514c794833-build.zip",
+      "lastPushDirHash": "SUW5UCyYhSjOEDvdGzQQEEv77/g="
     }
   },
   "api": {
@@ -58,7 +58,7 @@
         "RootUrl": "https://arz7xnr0l8.execute-api.us-east-1.amazonaws.com/dev",
         "ApiId": "arz7xnr0l8"
       },
-      "lastPushTimeStamp": "2022-05-03T10:21:29.067Z",
+      "lastPushTimeStamp": "2022-05-03T10:30:48.331Z",
       "providerMetadata": {
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-slackamplify-dev-190320-deployment/amplify-cfn-templates/api/slackpython-cloudformation-template.json",
         "logicalId": "apislackpython"

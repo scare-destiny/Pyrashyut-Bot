@@ -125,7 +125,7 @@ def check_domain(respond, body):
 
 
 def check_mx_records(respond, body):
-    # time.sleep(5)
+    time.sleep(5)
     split_body = body['text'].split()
 
     # Decouple request into args

@@ -22,15 +22,21 @@ app = App(process_before_response=True)
 
 
 def respond_to_slack_within_3_seconds(body, ack):
-    print(body)
-    print(ack)
     text = body.get("text")
-    print(text)
 
     if text is None or len(text.split()) != 2:
         ack("To command me, please use the following convention: /records + 'domain name' + 'selector'. If you don't know selector, just type 'google'. Ex: /records pyrashyut.com google ")
     else:
         ack(f"Checking domain, SPF, DMARC and DKIM records for {text}")
+
+
+def respond_to_slack_mx_records(body, ack):
+    text = body.get("text")
+
+    if text is None or len(text.split()) != 1:
+        ack("To retrieve MX records, use the following commang: /mx + 'domain name'. E.g. /mx google.com")
+    else:
+        ack(f"Checking MX Records for {text}")
 
 
 def check_records(respond, body):
@@ -145,7 +151,7 @@ app.command("/records")(
 )
 
 app.command("/mx")(
-    ack=respond_to_slack_within_3_seconds,  # responsible for calling `ack()`
+    ack=respond_to_slack_mx_records,  # responsible for calling `ack()`
     # unable to call `ack()` / can have multiple functions
     lazy=[check_mx_records]
 )
