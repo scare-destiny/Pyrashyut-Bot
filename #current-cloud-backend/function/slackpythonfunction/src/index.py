@@ -22,8 +22,10 @@ app = App(process_before_response=True)
 
 
 def respond_to_slack_within_3_seconds(body, ack):
-
+    print(body)
+    print(ack)
     text = body.get("text")
+    print(text)
 
     if text is None or len(text.split()) != 2:
         ack("To command me, please use the following convention: /records + 'domain name' + 'selector'. If you don't know selector, just type 'google'. Ex: /records pyrashyut.com google ")
@@ -75,7 +77,7 @@ def check_records(respond, body):
         pass
 
     respond(
-        f"That's it. If you want to validate your results for domain {domain} with selector {selector}, go to mxtoolbox.com")
+        f"That's it. If you want to validate your results for domain {domain} with selector {selector}, go to mxtoolbox.com. To check MX Records, use '/mx {domain}' command.")
 
 
 # Checking Domain
@@ -116,7 +118,7 @@ def check_domain(respond, body):
             f"Domain was created on {domain_creation_date}, {days_from_creation} days ago. This domain is ready for some action.")
 
 
-def check_mx_record(respond, body):
+def check_mx_records(respond, body):
     # time.sleep(5)
     split_body = body['text'].split()
 
@@ -142,10 +144,10 @@ app.command("/records")(
     lazy=[check_records, check_domain]
 )
 
-app.command("/domain")(
+app.command("/mx")(
     ack=respond_to_slack_within_3_seconds,  # responsible for calling `ack()`
     # unable to call `ack()` / can have multiple functions
-    lazy=[check_mx_record]
+    lazy=[check_mx_records]
 )
 
 
