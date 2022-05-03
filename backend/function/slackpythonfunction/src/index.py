@@ -29,6 +29,7 @@ def respond_to_slack_within_3_seconds(body, ack):
     else:
         ack(f"Checking domain, SPF, DMARC and DKIM records for {text}")
 
+
 def respond_to_slack_mx_records(body, ack):
     text = body.get("text")
 
@@ -36,6 +37,7 @@ def respond_to_slack_mx_records(body, ack):
         ack("To retrieve MX records, use the following commang: /mx + 'domain name'. E.g. /mx google.com")
     else:
         ack(f"Checking MX Records for {text}")
+
 
 def check_records(respond, body):
     time.sleep(6)  # longer than 3 seconds
@@ -149,7 +151,7 @@ app.command("/records")(
 )
 
 app.command("/mx")(
-    ack=respond_to_slack_within_3_seconds,  # responsible for calling `ack()`
+    ack=respond_to_slack_mx_records,  # responsible for calling `ack()`
     # unable to call `ack()` / can have multiple functions
     lazy=[check_mx_records]
 )
