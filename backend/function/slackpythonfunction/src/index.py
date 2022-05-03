@@ -25,7 +25,7 @@ def respond_to_slack_within_3_seconds(body, ack):
 
     text = body.get("text")
 
-    if text is None or len(text) != 2:
+    if text is None or len(text.split()) != 2:
         ack("To command me, please use the following convention: /records + 'domain name' + 'selector'. If you don't know selector, just type 'google'. Ex: /records pyrashyut.com google ")
     else:
         ack(f"Checking domain, SPF, DMARC and DKIM records for {text}")
