@@ -143,6 +143,8 @@ def check_mx_records(respond, body):
         respond("  [FAIL] MX record not found.")
         pass
 
+    respond(f"That's all I could find for {domain}. ")
+
 
 app.command("/records")(
     ack=respond_to_slack_within_3_seconds,  # responsible for calling `ack()`
