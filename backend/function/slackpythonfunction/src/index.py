@@ -26,6 +26,7 @@ def respond_to_slack_within_3_seconds(body, ack):
 
     if text is None or len(text.split()) != 2:
         ack("To command me, please use the following convention: /records + 'domain name' + 'selector'. If you don't know selector, just type 'google'. Ex: /records pyrashyut.com google ")
+        return
     else:
         ack(f"Checking domain, SPF, DMARC and DKIM records for {text}")
 
@@ -35,6 +36,7 @@ def respond_to_slack_mx_records(body, ack):
 
     if text is None or len(text.split()) != 1:
         ack("To retrieve MX records, use the following commang: /mx + 'domain name'. E.g. /mx google.com")
+        return
     else:
         ack(f"Checking MX Records for {text}")
 
@@ -125,7 +127,7 @@ def check_domain(respond, body):
 
 
 def check_mx_records(respond, body):
-    time.sleep(5)
+    time.sleep(8)
     split_body = body['text'].split()
 
     # Decouple request into args
@@ -137,11 +139,10 @@ def check_mx_records(respond, body):
         test_mx = dns.resolver.resolve(domain, 'MX')
         for dns_data in test_mx:
             if 'mx' in str(dns_data):
-                respond(f"  [PASS] MX record found   :{dns_data}")
+                respond({dns_data})
     except Exception as e:
         print(e)
         respond("  [FAIL] MX record not found.")
-        pass
 
     respond(f"That's all I could find for {domain}. ")
 

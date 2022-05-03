@@ -125,7 +125,7 @@ def check_domain(respond, body):
 
 
 def check_mx_records(respond, body):
-    # time.sleep(5)
+    time.sleep(5)
     split_body = body['text'].split()
 
     # Decouple request into args
@@ -142,6 +142,8 @@ def check_mx_records(respond, body):
         print(e)
         respond("  [FAIL] MX record not found.")
         pass
+
+    respond(f"That's all I could find for {domain}. ")
 
 
 app.command("/records")(
