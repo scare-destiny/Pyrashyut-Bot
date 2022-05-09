@@ -130,19 +130,20 @@ def check_mx_records(respond, body):
     time.sleep(8)
 
     domain = body['text']
+    respond("This feature is not available yet. Please try again later :)")
 
 # Testing MX Record
 #
-    try:
-        test_mx = dns.resolver.resolve(domain, 'MX')
-        for dns_data in test_mx:
-            if 'mx' in str(dns_data):
-                respond({dns_data})
-    except Exception as e:
-        print(e)
-        respond("  [FAIL] MX record not found.")
+    # try:
+    #     test_mx = dns.resolver.resolve(domain, 'MX')
+    #     for dns_data in test_mx:
+    #         if 'mx' in str(dns_data):
+    #             respond(dns_data)
+    # except Exception as e:
+    #     print(e)
+    #     respond("  [FAIL] MX record not found.")
 
-    respond(f"That's all I could find for {domain}. ")
+    # respond(f"That's all I could find for {domain}. ")
 
 
 app.command("/records")(
