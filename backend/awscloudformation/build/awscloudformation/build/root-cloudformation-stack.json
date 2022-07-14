@@ -158,7 +158,7 @@
         "TemplateURL": "https://s3.amazonaws.com/amplify-slackamplify-dev-190320-deployment/amplify-cfn-templates/function/slackpythonfunction-cloudformation-template.json",
         "Parameters": {
           "deploymentBucketName": "amplify-slackamplify-dev-190320-deployment",
-          "s3Key": "amplify-builds/slackpythonfunction-59644349663536364279-build.zip",
+          "s3Key": "amplify-builds/slackpythonfunction-3637795741354c414149-build.zip",
           "env": "dev"
         }
       }

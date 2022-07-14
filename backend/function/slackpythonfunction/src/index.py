@@ -28,17 +28,17 @@ def respond_to_slack_within_3_seconds(body, ack):
         ack("To command me, please use the following convention: /records + 'domain name' + 'selector'. If you don't know selector, just type 'google'. Ex: /records pyrashyut.com google ")
         return
     else:
-        ack(f"Checking domain, SPF, DMARC and DKIM records for {text}")
+        ack(f"Checking domain, SPF, DMARC and DKIM records for you 🤖🦾")
 
 
-def respond_to_slack_mx_records(body, ack):
+def respond_to_slack_one_arg(body, ack):
     text = body.get("text")
 
     if text is None or len(text.split()) != 1:
         ack("To retrieve MX records, use the following commang: /mx + 'domain name'. E.g. /mx google.com")
         return
     else:
-        ack(f"Checking MX Records for {text}")
+        ack(f"Checking MX Records...📡")
 
 
 def check_records(respond, body):
@@ -85,7 +85,7 @@ def check_records(respond, body):
         pass
 
     respond(
-        f"That's it. If you want to validate your results for domain {domain} with selector {selector}, go to mxtoolbox.com. To check MX Records, use '/mx {domain}' command.")
+        f"That's it. If you want to validate your results for domain {domain} with selector {selector}, go to mxtoolbox.com. To check MX Records, use '/mx {domain}' command (Now working 👯‍♀️)")
 
 
 # Checking Domain
@@ -127,29 +127,32 @@ def check_domain(respond, body):
 
 
 def check_mx_records(respond, body):
-    time.sleep(5)
+    time.sleep(10)
 
     domain = body['text']
     print(domain)
-    print(2)
-    # respond("This feature is not available yet. Please try again later :)")
-
 # Testing MX Record
 #
     try:
-        print(3)
-        test_mx = dns.resolver.resolve(domain, 'MX')
-        print(4)
+        test_mx = dns.resolver.resolve(domain, 'mx')
         for dns_data in test_mx:
-            if 'mx' in str(dns_data):
-                print(5)
-                respond(f" [PASS] MX record found: {dns_data}")
-                print(6)
-    except Exception as e:
+            print(5)
+            if dns_data is not None:
+                print(str(dns_data))
+                respond(str(dns_data))
+    except whois.parser.PywhoisError as e:
         print(e)
         respond("  [FAIL] MX record not found.")
+        pass
 
     respond(f"That's all I could find for {domain}. ")
+
+# FOR NEW REVERSE DNS COMMAND
+# test_ptr = dns.resolver.resolve_address('52.212.43.230')
+
+# for dns_data in test_ptr:
+# 	if dns_data is not None:
+# 		print(str(dns_data))
 
 
 app.command("/records")(
@@ -159,7 +162,7 @@ app.command("/records")(
 )
 
 app.command("/mx")(
-    ack=respond_to_slack_mx_records,  # responsible for calling `ack()`
+    ack=respond_to_slack_one_arg,  # responsible for calling `ack()`
     # unable to call `ack()` / can have multiple functions
     lazy=[check_mx_records]
 )
